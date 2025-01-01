@@ -156,7 +156,7 @@ export const getAllUserNames = async (): Promise<string[]> => {
 };
 
 
-const dbURI = 'mongodb+srv://school:school@mycluster.rj0zjqu.mongodb.net/';
+const dbURI = process.env.MONGO_URI || 'localhost';
 
 export const connectDB = async () => {
     try {
