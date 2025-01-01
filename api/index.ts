@@ -40,5 +40,4 @@ APP.use((request, response) => {
 });
 
 
-APP.listen(APP.get('port'), () => {	console.log(`Server is running on port ${APP.get('port')}`); });
-module.exports = APP;
+export default (req:any, res:any) => APP(req, res);
