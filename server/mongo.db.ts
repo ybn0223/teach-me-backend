@@ -156,7 +156,7 @@ export const getAllUserNames = async (): Promise<string[]> => {
 };
 
 
-const dbURI = process.env.MONGO_URI || 'localhost';
+const dbURI = process.env.MONGODB_URI || 'localhost';
 
 export const connectDB = async () => {
     try {
