@@ -1,11 +1,10 @@
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
-import APIROUTER from './routers/api';
-import serverless from 'serverless-http';
+import APIROUTER from '../routers/api';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { connectDB } from './server/mongo.db';
+import { connectDB } from '../server/mongo.db';
 
 dotenv.config();
 
@@ -26,9 +25,13 @@ APP.set('views', path.join(__dirname, 'views'));
 APP.set('port', process.env.PORT ?? 3000);
 
 APP.use('/api', APIROUTER);
-APP.listen(process.env.PORT, () => {
-	connectDB();
-	console.log(`Server started on http://localhost:${process.env.PORT}`);
+APP.use(async (req, res, next) => {
+    try {
+        await connectDB(); 
+        next();
+    } catch (error) {
+        res.status(500).send('Databaseverbinding mislukt');
+    }
 });
 APP.use((request, response) => {
 	response.status(404).json({
@@ -36,4 +39,6 @@ APP.use((request, response) => {
 	});
 });
 
-export const HANDLER = serverless(APP);
+
+APP.listen(APP.get('port'), () => {	console.log(`Server is running on port ${APP.get('port')}`); });
+module.exports = APP;
