@@ -1,0 +1,184 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  GetCourseTitlesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.HANDLER
+      Runtime: nodejs20.x
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        GetCourseTitlesApi:
+          Type: Api
+          Properties:
+            Path: /api/get-course-titles
+            Method: GET
+
+  GetCourseByKeyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.HANDLER
+      Runtime: nodejs20.x
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        GetCourseByKeyApi:
+          Type: Api
+          Properties:
+            Path: /api/get-course/{key}
+            Method: GET
+
+  CreateCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.HANDLER
+      Runtime: nodejs20.x
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        CreateCourseApi:
+          Type: Api
+          Properties:
+            Path: /api/create-course
+            Method: POST
+
+  ModifyCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.HANDLER
+      Runtime: nodejs20.x
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        ModifyCourseApi:
+          Type: Api
+          Properties:
+            Path: /api/modify-course
+            Method: PUT
+
+  DeleteCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.HANDLER
+      Runtime: nodejs20.x
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        DeleteCourseApi:
+          Type: Api
+          Properties:
+            Path: /api/delete-course/{key}
+            Method: DELETE
+
+  AddUserFunction:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: app.HANDLER
+        Runtime: nodejs20.x
+        MemorySize: 128
+        Timeout: 10
+        Events:
+          AddUserApi:
+            Type: Api
+            Properties:
+              Path: /api/add-user
+              Method: POST
+
+  LoginFunction:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: app.HANDLER
+        Runtime: nodejs20.x
+        MemorySize: 128
+        Timeout: 10
+        Events:
+          LoginApi:
+            Type: Api
+            Properties:
+              Path: /api/login
+              Method: POST
+
+  LoginSessionFunction:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: app.HANDLER
+        Runtime: nodejs20.x
+        MemorySize: 128
+        Timeout: 10
+        Events:
+          LoginSessionApi:
+            Type: Api
+            Properties:
+              Path: /api/login-session
+              Method: GET
+
+  LogoutFunction:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: app.HANDLER
+        Runtime: nodejs20.x
+        MemorySize: 128
+        Timeout: 10
+        Events:
+          LogoutApi:
+            Type: Api
+            Properties:
+              Path: /api/logout
+              Method: POST
+
+  ModifyFunction:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: app.HANDLER
+        Runtime: nodejs20.x
+        MemorySize: 128
+        Timeout: 10
+        Events:
+          ModifyApi:
+            Type: Api
+            Properties:
+              Path: /api/modify-user
+              Method: POST
+
+  GetAllUsernamesFunction:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: app.HANDLER
+        Runtime: nodejs20.x
+        MemorySize: 128
+        Timeout: 10
+        Events:
+          GetAllUsernamesApi:
+            Type: Api
+            Properties:
+              Path: /api/get-all-usernames
+              Method: GET
+
+  DeleteUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.HANDLER
+      Runtime: nodejs20.x
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        DeleteUserApi:
+          Type: Api
+          Properties:
+            Path: /api/delete-user/{userName}
+            Method: DELETE
+  ModifyUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.HANDLER
+      Runtime: nodejs20.x
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        ModifyUserApi:
+          Type: Api
+          Properties:
+            Path: /api/modify-user
+            Method: PUT
