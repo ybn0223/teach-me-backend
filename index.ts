@@ -1,10 +1,10 @@
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
-import APIROUTER from '../routers/api';
+import APIROUTER from './routers/api';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { connectDB } from '../server/mongo.db';
+import { connectDB } from './server/mongo.db';
 
 // Configuratie van environment-variabelen
 dotenv.config();
